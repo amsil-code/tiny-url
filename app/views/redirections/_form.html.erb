@@ -1,0 +1,44 @@
+<div class="row">
+  <% if redirection.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-info">
+        <h5><%= pluralize(redirection.errors.count, "error") %> prohibited this redirection from being saved:</h5>
+        <ul>
+          <% redirection.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="bg-info p-5 m-3">
+      <h3>Enter a long URL to make a TinyURL</h3>
+
+      <%= form_with(model: redirection, local: true) do |form| %>
+        <div class="form-group my-3">
+          <%= form.label :url_address %>
+          <%= form.text_field :url_address, class: 'form-control' %>
+        </div>
+
+        <div class="form-group mb-3">
+          <%= form.label :mask_url, "Shorted URL (optional)" %>
+          <div class="input-group">
+            <span class="input-group-text">
+              <%= "#{root_url}" %>
+            </span>
+            <%= form.text_field :mask_url, class: 'form-control' %>
+          </div>
+
+        </div>
+
+        <div class="actions">
+          <%= form.submit "Shorten URL", class: 'btn btn-success mt-2' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -11,6 +11,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="mx-5">
+        <%= link_to "TinyURL", root_path, class: "navbar-brand" %>
+      </div>
+    </nav>
+
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
