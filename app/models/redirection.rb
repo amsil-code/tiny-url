@@ -1,7 +1,7 @@
 class Redirection < ApplicationRecord
   has_many :visits
 
-  validates :url_address, presence: true
+  validates :url_address, presence: true, url: true
   validates :mask_url, presence: true, uniqueness: true, length: { minimum: 5, maximum: 8 }
 
   before_validation :set_mask_url
